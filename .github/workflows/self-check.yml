@@ -1,0 +1,26 @@
+name: self-check
+
+on: push
+jobs:
+
+  install:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - run: make install
+
+      - run: make lint
+
+      - run: make test
+
+      - name: Run test & publish code coverage
+        uses: paambaati/codeclimate-action@v5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_ID }}
+        with:
+          coverageCommand: make test-coverage
+          coverageLocations: build/logs/clover.xml:clover
+          debug: true
