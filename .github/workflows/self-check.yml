@@ -10,6 +10,28 @@ jobs:
 
       - uses: actions/checkout@v3
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, xml, ctype, json, curl
+          coverage: xdebug
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      # Создаём .env файл
+      - name: Create .env file
+        run: cp .env.example .env
+
+      # Генерация ключа приложения
+      - name: Generate APP_KEY
+        run: php artisan key:generate
+
+      # Очистка кэша конфигурации
+      - name: Clear config cache
+        run: php artisan config:clear
+
       - run: make install
 
       - run: make lint
