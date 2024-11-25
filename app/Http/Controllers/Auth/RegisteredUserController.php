@@ -45,7 +45,7 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
+        flash('Профиль успешно создан');
         return redirect(RouteServiceProvider::HOME);
     }
 }
