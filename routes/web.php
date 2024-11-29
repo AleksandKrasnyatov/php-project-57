@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\TaskStatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
+
+Route::resources([
+    'task_statuses' => TaskStatusController::class,
+]);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

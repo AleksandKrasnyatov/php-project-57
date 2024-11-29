@@ -8,7 +8,7 @@
         "ext-pdo": "*",
         "guzzlehttp/guzzle": "^7.2",
         "laracasts/flash": "^3.2",
-        "laravel/framework": "^10.10",
+        "laravel/framework": "^10.4",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "sentry/sentry-laravel": "^4.9"
