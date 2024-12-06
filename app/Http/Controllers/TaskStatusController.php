@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Status;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 class TaskStatusController extends Controller
@@ -10,7 +13,7 @@ class TaskStatusController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
         $statuses = Status::paginate();
         return view('task_status.index', compact('statuses'));
@@ -21,7 +24,8 @@ class TaskStatusController extends Controller
      */
     public function create()
     {
-        //
+        $status = new Status();
+        return view('task_status.create', compact('status'));
     }
 
     /**
