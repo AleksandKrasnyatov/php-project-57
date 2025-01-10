@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StatusRequest;
 use App\Models\Status;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -31,11 +32,9 @@ class TaskStatusController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StatusRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|unique:statuses',
-        ]);
+        $data = $request->validated();
         Status::create($data);
         return redirect()
             ->route('task_statuses.index')
