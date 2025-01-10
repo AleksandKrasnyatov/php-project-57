@@ -11,7 +11,8 @@
         "laravel/framework": "^10.4",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "sentry/sentry-laravel": "^4.9"
+        "sentry/sentry-laravel": "^4.9",
+        "spatie/laravel-html": "^3.5"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.1",

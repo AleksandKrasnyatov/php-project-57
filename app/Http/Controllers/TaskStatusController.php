@@ -33,8 +33,13 @@ class TaskStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
-//        return Redirect::route('task_statuses.index');
+        $data = $this->validate($request, [
+            'name' => 'required|unique:statuses',
+        ]);
+        Status::create($data);
+        return redirect()
+            ->route('task_statuses.index')
+            ->with('success', 'Статус успешно добавлен');
     }
 
     /**
