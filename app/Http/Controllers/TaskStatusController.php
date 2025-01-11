@@ -54,15 +54,20 @@ class TaskStatusController extends Controller
      */
     public function edit(Status $taskStatus)
     {
-        //
+        return view('task_status.edit', compact('taskStatus'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Status $taskStatus)
+    public function update(StatusRequest $request, Status $taskStatus)
     {
-        //
+        $data = $request->validated();
+        $taskStatus->fill($data);
+        $taskStatus->save();
+        return redirect()
+            ->route('task_statuses.index')
+            ->with('success', 'Статус успешно обновлен');
     }
 
     /**
@@ -70,6 +75,9 @@ class TaskStatusController extends Controller
      */
     public function destroy(Status $taskStatus)
     {
-        //
+        $taskStatus->delete();
+        return redirect()
+            ->route('task_statuses.index')
+            ->with('success', 'Статус успешно удален');
     }
 }

@@ -29,12 +29,13 @@
                         <a class="text-red-600 hover:text-red-900"
                            data-confirm="Вы уверены?"
                            data-method="delete"
-                           href="{{route('task_statuses.destroy', [$status])}}"
+                           rel="nofollow"
+                           href="{{route('task_statuses.destroy', $status->id)}}"
                         >
                             Удалить
                         </a>
                         <a class="text-blue-600 hover:text-blue-900"
-                           href="{{route('task_statuses.edit', [$status])}}"
+                           href="{{route('task_statuses.edit', $status->id)}}"
                         >
                             Изменить
                         </a>
