@@ -3,14 +3,18 @@
 namespace Tests\Feature;
 
 use App\Models\Status;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class TaskStatusTest extends TestCase
 {
+
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         //
-        //Зачем здесь создается здесь фабрика, которая не пишется в переменную
+        //Зачем здесь создается здесь фабрика, которая не пишется в переменную???
         //
         parent::setUp();
         Status::factory()->count(2)->make();
