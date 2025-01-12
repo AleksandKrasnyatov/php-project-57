@@ -68,6 +68,6 @@ class TaskStatusTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect(route('task_statuses.index'));
 
-        $this->assertDatabaseMissing('task_statuses', $status->only('id'));
+        $this->assertDatabaseMissing('statuses', $status->only('id'));
     }
 }
