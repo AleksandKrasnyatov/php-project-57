@@ -26,11 +26,11 @@
                     <td>{{$status->name}}</td>
                     <td>{{$status->created_at}}</td>
                     <td>
-                        <a class="text-red-600 hover:text-red-900"
-                           data-confirm="Вы уверены?"
-                           data-method="delete"
-                           rel="nofollow"
+                        <a class="text-decoration-none link-danger"
                            href="{{route('task_statuses.destroy', $status->id)}}"
+                           data-confirm="Are you sure?"
+                           rel="nofollow"
+                           data-method="delete"
                         >
                             Удалить
                         </a>
