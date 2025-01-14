@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->foreignIdFor(Status::class, 'status_id')->nullable(false);
             $table->foreignIdFor(User::class, 'created_by_id')->nullable(false);
-            $table->foreignIdFor(User::class, 'assigned_to_id ');
+            $table->foreignIdFor(User::class, 'assigned_to_id');
             $table->timestamps();
         });
     }
