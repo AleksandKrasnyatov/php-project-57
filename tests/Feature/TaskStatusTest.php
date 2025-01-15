@@ -58,6 +58,7 @@ class TaskStatusTest extends TestCase
         $response->assertRedirect(route('task_statuses.index'));
         $response->assertSessionHasNoErrors();
 
+        $data = array_merge($data, ['id' => $status->id]);
         $this->assertDatabaseHas('statuses', $data);
     }
 
