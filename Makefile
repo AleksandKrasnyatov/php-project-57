@@ -14,6 +14,9 @@ setup:
 	npm ci
 	npm run build
 
+routes-list:
+	php artisan route:list
+
 watch:
 	npm run watch
 

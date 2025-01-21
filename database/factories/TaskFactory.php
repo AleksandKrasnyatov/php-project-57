@@ -16,7 +16,7 @@ class TaskFactory extends Factory
     protected $model = Task::class;
 
     /**
-     * @return array|mixed[]
+     * @return array
      */
     public function definition(): array
     {
