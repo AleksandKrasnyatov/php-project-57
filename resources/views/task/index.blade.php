@@ -5,14 +5,16 @@
         <div>
             Форма с фильтрами
         </div>
-        <div class="ml-auto">
-            <a
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
-                href={{route('tasks.create')}}
-            >
-                Создать задачу
-            </a>
-        </div>
+        @if($session->user_id)
+            <div class="ml-auto">
+                <a
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
+                    href={{route('tasks.create')}}
+                >
+                    Создать задачу
+                </a>
+            </div>
+        @endif
     </div>
     <table class="mt-4">
         <thead class="border-b-2 border-solid border-black text-left">
