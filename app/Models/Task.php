@@ -24,4 +24,15 @@ class Task extends Model
     {
         return $this->belongsTo(User::class, 'assigned_to_id');
     }
+
+    /**
+     * Является ли переданный юзер автором
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function isAuthor(User $user): bool
+    {
+        return $this->created_by_id == $user->id;
+    }
 }

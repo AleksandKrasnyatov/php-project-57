@@ -5,7 +5,7 @@
         <div>
             Форма с фильтрами
         </div>
-        @if($session->user_id)
+        @auth
             <div class="ml-auto">
                 <a
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
@@ -14,7 +14,7 @@
                     Создать задачу
                 </a>
             </div>
-        @endif
+        @endauth
     </div>
     <table class="mt-4">
         <thead class="border-b-2 border-solid border-black text-left">
@@ -39,19 +39,23 @@
                 <td>{{ $task->assignee?->name }}</td>
                 <td>{{ $task->created_at->format('Y-m-d H:i') }}</td>
                 <td>
-                    <a class="text-decoration-none link-danger"
-                       href="{{route('tasks.destroy', $task->id)}}"
-                       data-confirm="Are you sure?"
-                       rel="nofollow"
-                       data-method="delete"
-                    >
-                        Удалить
-                    </a>
-                    <a class="text-blue-600 hover:text-blue-900"
-                       href="{{route('task_statuses.edit', $task->id)}}"
-                    >
-                        Изменить
-                    </a>
+                    @if($user ?? $task->isAuthor($user))
+                        <a class="text-decoration-none link-danger"
+                           href="{{route('tasks.destroy', $task->id)}}"
+                           data-confirm="Are you sure?"
+                           rel="nofollow"
+                           data-method="delete"
+                        >
+                            Удалить
+                        </a>
+                    @endif
+                    @auth
+                        <a class="text-blue-600 hover:text-blue-900"
+                           href="{{route('task_statuses.edit', $task->id)}}"
+                        >
+                            Изменить
+                        </a>
+                    @endauth
                 </td>
             </tr>
         @endforeach
